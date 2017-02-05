@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>首页</title>
+
+        <link rel="stylesheet" href="css/bootstrap.css?v=01291">
+        <link rel="stylesheet" href="css/style.css?v=1?v=01291">
+        <link rel="stylesheet" href="css/member.css?v=01291">
+        <link rel="stylesheet" href="css/order3.css?v=01291"><meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="telephone=no" name="format-detection">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1;user-scalable=no;">
+
+
+        <style type="text/css">
+            /* 本例子css -------------------------------------- */
+
+            /*搜索栏配置*/
+            .header .img-responsive{text-align:center;background:#ccc;border-radius: 5px;border:none;height:34px;vertical-align:middle;clear:both;padding:0px;width:42px;}
+            .fix_nav{max-width:768px;margin:0 auto;height: 44px;position: relative;background:#000000;}
+
+            /*焦点切换图配置*/
+            #slide .bd{overflow:hidden; position:relative;}
+            #slide .bd ul{width: 3840px; position: relative; overflow: hidden; padding: 0px; margin: 0px; transition-duration: 200ms; transform: translateX(-768px);}
+            #slide .bd li{display: table-cell; vertical-align: top; width: 768px;}
+            /* 本例子css -------------------------------------- */
+
+        </style>
+
+
+    </head>
+    <body>
+
+    <!--搜索栏-->
+    <header class="header">
+        <div class="fix_nav">
+            <div >
+                <!--<div style="max-width:768px;margin:0 auto;height: 44px;position: relative;background:#000000;">-->
+                <form action="/m_search/list" method="get" id="searchform" name="searchform">
+                    <div class="navbar-search left-search">
+                        <input type="text" id="keyword" name="keyword" value="" placeholder="搜索商品" class="form-control">
+                    </div>
+                    <div class="nav-right">
+                        <!--<input type="button" value="搜索" onclick="searchproduct();" class="img-responsive" style="text-align:center;background:#ccc;border-radius: 5px;border:none;height:34px;vertical-align:middle;clear:both;padding:0px;width:42px;"/>-->
+                        <input type="button" value="搜索" onclick="searchproduct();" class="img-responsive" >;
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- 焦点图自适应宽代码 -->
+    <script src="js/TouchSlide.1.1.js"> </script>
+    <div class="container">
+        <div class="row">
+            <div id="slide">
+                <div class="hd">
+                    <ul><li class="on">1</li><li class="on">2</li><li class="on">3</li></ul>
+                </div>
+                <div class="bd">
+                    <!--<div class="tempWrap" style="overflow:hidden; position:relative;">-->
+                        <!--<ul style="width: 3840px; position: relative; overflow: hidden; padding: 0px; margin: 0px; transition-duration: 200ms; transform: translateX(-768px);">-->
+                    <div class="tempWrap">
+                    <ul>
+                        <!--<li style="display: table-cell; vertical-align: top; width: 768px;">-->
+                        <li>
+                                <a href="http://m.legendshop.cn/m_search/list?categoryId=36" target="_blank">
+                                    <img src="img/0da8eb94-0159-4700-a6a5-bc007da5a853.jpg" alt="女包" ppsrc="img/0da8eb94-0159-4700-a6a5-bc007da5a853.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://m.legendshop.cn/m_search/list?categoryId=38" target="_blank">
+                                    <img src="img/61647775-f5d0-4cfe-b84f-96060eb8e2e3.jpg" alt="女鞋" ppsrc="img/61647775-f5d0-4cfe-b84f-96060eb8e2e3.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://m.legendshop.cn/m_search/list?categoryId=38" target="_blank">
+                                    <img src="img/efa1dc7b-1375-4876-acae-e344cae7d55c.jpg" alt="服装" ppsrc="img/efa1dc7b-1375-4876-acae-e344cae7d55c.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://m.legendshop.cn/m_search/list?categoryId=38" target="_blank">
+                                    <img src="img/61647775-f5d0-4cfe-b84f-96060eb8e2e3.jpg" alt="女鞋" ppsrc="img/61647775-f5d0-4cfe-b84f-96060eb8e2e3.jpg">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://m.legendshop.cn/m_search/list?categoryId=38" target="_blank">
+                                    <img src="img/efa1dc7b-1375-4876-acae-e344cae7d55c.jpg" alt="服装" ppsrc="img/efa1dc7b-1375-4876-acae-e344cae7d55c.jpg">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        TouchSlide({
+            slideCell:"#slide",
+            titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell:".bd ul",
+            effect:"leftLoop",
+            autoPage:true,//自动分页
+            autoPlay:true //自动播放
+        });
+
+    <!-- 本例主要代码 End ================================ -->
+        $(function () {
+                        $.ajax({
+                                type: 'post',
+
+                                async: true,
+
+                                url: 'deal.php',
+
+                                contentType: false,    //不可缺
+
+                                processData: false,    //不可缺
+
+                                //data: datas,
+                                // dataType: "html",
+                                success: function (data, status) {
+
+                                    $("#slide .tempWrap ul").html(data);
+                                    $("#slide .hd ul").html(strCounts);
+
+                                },
+
+                                error: function (data, status, e) {
+                                    console.log("系统异常" + data + e);
+                                },
+
+                                beforeSend: function(xhr){
+
+                                }
+                    });
+
+                });
+    </script>
+    </body>
+</html>
